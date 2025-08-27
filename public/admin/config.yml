@@ -1,0 +1,19 @@
+backend:
+  name: git-gateway
+  branch: main # Ganti dengan 'master' jika Anda menggunakannya
+
+media_folder: "public/uploads" # Folder di mana gambar akan disimpan
+public_folder: "/uploads" # Alamat URL untuk gambar
+
+collections:
+  - name: "kegiatan"
+    label: "Kegiatan Masjid"
+    folder: "src/data/kegiatan" # Folder tempat file JSON/MD akan disimpan
+    create: true # Izinkan pengguna untuk membuat entri baru
+    slug: "{{tanggal}}-{{judul}}" # Format nama file
+    fields:
+      - {label: "Judul", name: "judul", widget: "string"}
+      - {label: "Tanggal Kegiatan", name: "tanggal", widget: "datetime"}
+      - {label: "Waktu", name: "waktu", widget: "string"}
+      - {label: "Deskripsi", name: "deskripsi", widget: "markdown"}
+      - {label: "Gambar", name: "gambar", widget: "image", required: false}
